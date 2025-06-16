@@ -83,7 +83,7 @@ export default function Hero7() {
         >
           {slides.map((elm, i) => (
             <SwiperSlide key={elm.id}>
-              <div className="hero__bg">
+              <div className="hero__bg image-half-overlay">
                 <Image
                   width={1920}
                   height={960}
