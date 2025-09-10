@@ -9,14 +9,44 @@ import MobileMenu from "../components/MobileMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 export default function Header1() {
   const router = useRouter();
+  const pathname = usePathname();
   const pageNavigate = (pageName) => {
     router.push(pageName);
   };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [addClass, setAddClass] = useState(false);
+
+  // Desktop menu items - same as mobile menu
+  const menuItems = [
+    {
+      title: "Facility",
+      location: "/tour-list-6",
+    },
+    {
+      title: "Events",
+      location: "/events",
+    },
+    {
+      title: "About",
+      location: "/about",
+    },
+    {
+      title: "Club Gallary",
+      location: "/clubGallary",
+    },
+    {
+      title: "Event Gallary",
+      location: "/eventGallary",
+    },
+    {
+      title: "Contact Us",
+      location: "/contact",
+    },
+  ];
 
   // Add a class to the element when scrolled 50px
   const handleScroll = () => {
@@ -67,40 +97,32 @@ export default function Header1() {
             </div> */}
           </div>
 
-          <div className="headerMobile__right">
-            <button
-              onClick={() => pageNavigate("/tour-list-1")}
-              className="d-flex"
-            >
-              <i className="icon-search text-18"></i>
-            </button>
-
-            <button
-              onClick={() => pageNavigate("/login")}
-              className="d-flex ml-20"
-            >
-              <i className="icon-person text-18"></i>
-            </button>
+          {/* Desktop Navigation Menu */}
+          <div className="header__nav">
+            <nav className="header__navigation">
+              <ul className="d-flex items-center x-gap-30">
+                {menuItems.map((item, index) => (
+                  <li key={index}>
+                    <Link 
+                      href={item.location}
+                      className={`header__nav-link ${
+                        pathname === item.location ? 'is-active' : ''
+                      }`}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           <div className="header__right">
-            {/* <Destinations />
-            <Activities /> */}
-            {/* <Currency /> */}
-            {/* <Link href="/register" className="ml-10">
-              Sign up
-            </Link>
-
-            <Link
-              href="/login"
-              className="button -sm -dark-1 bg-accent-1 rounded-200 text-white ml-30"
-            >
-              Log in
-            </Link> */}
-
+            
+            {/* Mobile menu button - only visible on mobile */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="header__menuBtn ml-30 js-menu-button"
+              className="header__menuBtn ml-30 js-menu-button headerMobile__menuBtn"
             >
               <i className="icon-main-menu"></i>
             </button>
