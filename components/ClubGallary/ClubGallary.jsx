@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { tourDataThreeA } from "@/data/tours";
-// import "./style.css";
+import "./style.module.css";
 import { IoCloseSharp } from "react-icons/io5";
 
 import Image from "next/image";

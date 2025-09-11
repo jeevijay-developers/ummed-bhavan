@@ -2327,6 +2327,12 @@ h1, h2, h3, h4, h5, h6 {
   height: 90px;
 }
 
+
+/* In your CSS file */
+.custom-hover:hover {
+  color: black !important;
+}
+
 .header__search .headerSearchRecent__item:hover {
   background-color: var(--bg-1, #F5F5F5);
 }
@@ -13632,11 +13638,11 @@ table.table-4.-border-bottom tbody > tr {
 }
 
 .-hover-image-scale__image img {
-  transition: 0.6s;
+  transition: 0.5s;
 }
 
 .-hover-image-scale:hover .-hover-image-scale__image img {
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 .gallery__item {

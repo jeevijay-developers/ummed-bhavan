@@ -39,10 +39,10 @@ export default function page() {
         <TourTypeOne />
         {/* <TourSlderOne /> */}
         {/* <TestimonialOne /> */}
-        <BannerOne />
+        {/* <BannerOne /> */}
         <Features9 />
         <BannerFour />
-        <FeaturesThree />
+        {/* <FeaturesThree /> */}
 
         {/* <ArticlesThree /> */}
         <FooterOne />

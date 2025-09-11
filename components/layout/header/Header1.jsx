@@ -24,7 +24,7 @@ export default function Header1() {
   const menuItems = [
     {
       title: "Facility",
-      location: "/tour-list-6",
+      location: "/facility",
     },
     {
       title: "Events",

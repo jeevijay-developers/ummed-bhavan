@@ -37,7 +37,7 @@ export default function Features9() {
             <div data-aos="fade-up" data-aos-delay="" className="row y-gap-30">
               {featureCards.map((elm, i) => (
                 <div key={i} className="col-md-4 col-6">
-                  <a href="#" className="featureCard -type-5 -hover-accent-1">
+                  <a href="#" className="featureCard -type-5 -hover-accent-1" style={{ minHeight: '200px' }}>
                     <div className="featureCard__icon">
                       <Image
                         width="40"

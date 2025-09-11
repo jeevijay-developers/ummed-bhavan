@@ -51,10 +51,7 @@ export default function DestinationsOne() {
                 },
                 1024: {
                   slidesPerView: 6,
-                },
-                1200: {
-                  slidesPerView: 8,
-                },
+                }
               }}
             >
               {destinations.map((elm, i) => (

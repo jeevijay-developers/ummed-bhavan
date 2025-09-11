@@ -78,7 +78,7 @@ const Event = () => {
           border-radius: 15px;
           overflow: hidden;
           box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          transition: transform 0.3s ease-in-out, box-shadow 0.1s ease-in-out;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -86,7 +86,6 @@ const Event = () => {
           padding: 20px;
         }
         .event-card:hover {
-          transform: scale(1.03);
           box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
         }
         .event-image {

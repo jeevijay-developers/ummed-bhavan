@@ -52,17 +52,17 @@ export default function FooterOne() {
               <div className="col-lg-4 col-md-6">
                 <h4 className="text-20 fw-500">Contact</h4>
 
-                <div className="y-gap-10 mt-20">
-                  <a className="d-block" href="#">
+                <div className="y-gap-10 mt-20 ">
+                  <a className="d-block custom-hover" >
                     Address: Opposite J.K. Pavallion, Near C.V. Garden,
                     Nayapura, Kota, Rajasthan
                   </a>
-                  <a className="d-block" href="#">
-                    <b> Contact Person 1</b> Mr. Hemraj Singh Chandrawat,
+                  <a className="d-block custom-hover">
+                    <b> Contact Person 1: </b> Mr. Hemraj Singh Chandrawat,<br />
                     Manager +91-8003352022
                   </a>
-                  <a className="d-block" href="#">
-                    <b> Contact Person 2</b> Mr. Vijay Kumar Pandit, Accountat.
+                  <a className="d-block custom-hover">
+                    <b> Contact Person 2: </b> Mr. Vijay Kumar Pandit, <br /> Accountant.
                     +91-8233861088
                   </a>
                 </div>
@@ -84,7 +84,7 @@ export default function FooterOne() {
                 <h4 className="text-20 fw-500 mt-30">Mobile Apps</h4>
 
                 <div className="mt-10">
-                  <a className="d-flex items-center" href="#">
+                  <a className="d-flex items-center">
                     <i className="icon-apple text-16 mr-10"></i>
                     iOS App
                   </a>

@@ -34,7 +34,8 @@ export default function TourTypeOne() {
         <div
           data-aos="fade-up"
           data-aos-delay=""
-          className="grid -type-1 pt-40 sm:pt-20"
+          className="-type-1 pt-40 sm:pt-22"
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}
         >
           {destinationsSix.map((elm, i) => (
             <section

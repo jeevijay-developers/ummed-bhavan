@@ -18,23 +18,78 @@
 }
 
 .bigImage {
-  position: absolute;
-  top: 0%;
-  /* left: 50%; */
-  /* transform: translate(-54%, -50%); */
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #b5b5b557;
-  backdrop-filter: blur(11px);
+  background: rgba(24, 23, 23, 0.33);
+  backdrop-filter: blur(15px);
+  z-index: 9999;
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .close {
-  position: absolute;
+  position: fixed;
   color: white;
-  font-size: xx-large;
-  top: 12%;
-  right: 25px;
+  font-size: 2.5rem;
+  top: 20px;
+  right: 30px;
   cursor: pointer;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+.close-evenet {
+  position: fixed;
+  color: white;
+  font-size: 2.5rem;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.close-evenet:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Modal image styling */
+.bigImage img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
 }

@@ -20,23 +20,25 @@ export default function BannerFour() {
       {/* Text Content */}
       <div className="container relative z-10">
         <div className="row justify-center text-center">
-          <div className="col-auto">
+          {/* <div className="col-auto">
             <h2
               data-aos="fade-up"
               data-aos-delay="300"
-              className="text-6xl md:text-4xl sm:text-2xl text-yellow-400 font-extrabold tracking-wide"
+              className="text-6xl md:text-4xl sm:text-2xl text-yellow-400 font-extrabold "
+              style={{ color: '#111' }}
             >
               Keep Things Flexible
             </h2>
             <p
               data-aos="fade-up"
               data-aos-delay="500"
-              className="text-gray-200 text-lg sm:text-sm mt-4 bg-black bg-opacity-50 px-4 py-2 rounded-md"
+              className="text-gray-200 text-lg sm:text-sm mt-4 px-4 py-2 rounded-b-full"
+              style={{ backgroundColor: '#9999', borderRadius: '8px' }}
             >
-               <span className="font-bold text-white"> Use Reserve Now & Pay Later 
+               <span className="text-white"> Use Reserve Now & Pay Later 
               to secure the activities you don't want to miss without being locked in.</span>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
