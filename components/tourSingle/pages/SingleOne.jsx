@@ -1,21 +1,10 @@
 import React from "react";
 import MainInformation from "../MainInformation";
-import OthersInformation from "../OthersInformation";
 import Overview from "../Overview";
-import Included from "../Included";
-import Map from "@/components/tours/Map";
-import Faq from "../Faq";
-import Rating from "../Rating";
-import Reviews from "../Reviews";
-import TourSingleSidebar from "../TourSingleSidebar";
 import Gallery1 from "../Galleries/Gallery1";
-import DateCalender from "../DateCalender";
-import RoadMap2 from "../Roadmap2";
-import CommentBox from "../CommentBox";
+
 
 export default function SingleOne({ tour }) {
-  console.log(tour);
-
   return (
     <>
       <section className="">
@@ -29,9 +18,6 @@ export default function SingleOne({ tour }) {
         <div className="container">
           <div className="row y-gap-30 justify-between">
             <div className="col-lg-8">
-              <div className="row y-gap-20 justify-between items-center layout-pb-md">
-                {/* <OthersInformation /> */}
-              </div>
 
               <Overview tour={tour} />
 

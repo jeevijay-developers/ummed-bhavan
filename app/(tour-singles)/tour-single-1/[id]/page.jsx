@@ -12,8 +12,6 @@ export const metadata = {
 
 export default async function page({ slug }) {
   const tour = await fetchFacilitiesbySlug(slug);
-  console.log(tour);
-
   return (
     <>
       <main>

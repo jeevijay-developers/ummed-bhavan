@@ -12,8 +12,6 @@ export const fetchFacilities = async (page = 1, limit = 9) => {
 
 export const fetchFacilitiesbySlug = async (slug) => {
     try {
-        console.log("Slugs: ", slug);
-
         const response = await axiosInstance.get(`/api/facilities/slug/${slug}`);
         return response.data;
     } catch (error) {

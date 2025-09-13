@@ -13,10 +13,7 @@ export const metadata = {
 export default async function page({ params }) {
     const {slug} = await params;
   const facility = await fetchFacilitiesbySlug(slug);
-  console.log("Slug: ", facility);
   
-  console.log(facility);
-
   return (
     <>
       <main>
