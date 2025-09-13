@@ -74,7 +74,7 @@ export default function Header6() {
             </button>
 
             <button
-              onClick={() => pageNavigate("/login")}
+              onClick={() => pageNavigate("/")}
               className="d-flex ml-20"
             >
               <i className="icon-person text-white text-18"></i>
@@ -95,7 +95,7 @@ export default function Header6() {
             </Link>
 
             <Link
-              href="/login"
+              href="/"
               className="button -sm -dark-1 bg-white rounded-200 ml-30"
             >
               Log in

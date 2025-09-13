@@ -2,6 +2,7 @@
 
 import { tourDataThree } from "@/data/tours";
 import React, { useState, useRef, useEffect } from "react";
+import { fetchFacilities } from "@/util/server";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -12,10 +13,33 @@ export default function TourList5() {
   const dropDownContainer = useRef();
   const dropDownContainer2 = useRef();
 
+  // State for dynamic facilities
+  const [facilities, setFacilities] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const router = useRouter();
   const [curentDD, setCurentDD] = useState("");
 
+  // Fetch facilities from API
+  const loadFacilities = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await fetchFacilities(1, 9); // Fetch more facilities for display
+      setFacilities(data.facilities || []);
+    } catch (err) {
+      console.error('Error fetching facilities:', err);
+      setError('Failed to load facilities');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
+    // Load facilities on component mount
+    loadFacilities();
+
     const handleClick = (event) => {
       if (
         dropDownContainer.current &&
@@ -38,8 +62,9 @@ export default function TourList5() {
     };
   }, []);
 
-  const handleFacilityClick = (index) => {
-    router.push(`/tour-single-1/${index}`);
+  const handleFacilityClick = (facility) => {
+    // Navigate using facility slug or ID for dynamic routing
+    router.push(`/facility/${facility.slug}`);
   };
   return (
     <section className="layout-pt-lg layout-pb-xl">
@@ -335,64 +360,76 @@ export default function TourList5() {
         </div> */}
 
         <div className="row y-gap-30 pt-30">
-          {tourDataThree.map((elm, i) => (
-            <div
-            key={i}
-            className="col-lg-3 col-sm-6"
-            style={{ cursor: "pointer" }}
-            onClick={() => handleFacilityClick(i)}
-          >
-              <div className="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
-                <div className="tourCard__header">
-                  <div className="tourCard__image ratio ratio-28:20">
-                    <Image
-                      width={421}
-                      height={301}
-                      src={elm.imageSrc}
-                      alt="image"
-                      className="img-ratio rounded-12"
-                    />
+          {loading ? (
+            // Loading state
+            <div className="col-12 text-center py-50">
+              <div 
+                className="mx-auto mb-20"
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  border: '4px solid #f3f3f3',
+                  borderTop: '4px solid #3498db',
+                  borderRadius: '50%',
+                  animation: 'spin 2s linear infinite'
+                }}
+              ></div>
+              <p className="mt-20">Loading facilities...</p>
+              <style jsx>{`
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+              `}</style>
+            </div>
+          ) : error ? (
+            // Error state
+            <div className="col-12 text-center py-50">
+              <p className="text-16 mb-10" style={{color: '#e74c3c'}}>{error}</p>
+              <button 
+                onClick={loadFacilities}
+                className="button px-30 py-15 -accent-1 text-accent-1 bg-accent-1-05 border-accent-1"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : facilities.length === 0 ? (
+            // Empty state
+            <div className="col-12 text-center py-50">
+              <p className="text-18 fw-500 mb-10">Sooner the facilities will be added</p>
+              <p className="text-light-2">We're working on adding new facilities for you.</p>
+            </div>
+          ) : (
+            // Dynamic facilities rendering
+            facilities.map((facility, i) => (
+              <div
+                key={facility._id || i}
+                className="col-lg-3 col-sm-6"
+                style={{ cursor: "pointer" }}
+                onClick={() => handleFacilityClick(facility)}
+              >
+                <div className="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+                  <div className="tourCard__header">
+                    <div className="tourCard__image ratio ratio-28:20">
+                      <Image
+                        width={421}
+                        height={301}
+                        src={facility.images?.[0] || "/img/placeholder.jpg"}
+                        alt={facility.name || "Facility"}
+                        className="img-ratio rounded-12"
+                      />
+                    </div>
                   </div>
 
-                  {/* <button className="tourCard__favorite">
-                    <i className="icon-heart"></i>
-                  </button> */}
-                </div>
-
-                <div className="tourCard__content px-10 pt-10">
-                  {/* <div className="tourCard__location d-flex items-center text-13 text-light-2">
-                    <i className="icon-pin d-flex text-16 text-light-2 mr-5"></i>
-                    {elm.location}
-                  </div> */}
-
-                  <h3 className="tourCard__title text-16 fw-500 mt-5">
-                    <span>{elm.title}</span>
-                  </h3>
-
-                  {/* <div className="tourCard__rating d-flex items-center text-13 mt-5">
-                    <div className="d-flex x-gap-5">
-                      <Stars star={elm.rating} />
-                    </div>
-
-                    <span className="text-dark-1 ml-10">
-                      {elm.rating} ({elm.ratingCount})
-                    </span>
-                  </div> */}
-                  {/* 
-                  <div className="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
-                    <div className="d-flex items-center">
-                      <i className="icon-clock text-16 mr-5"></i>
-                      {elm.duration}
-                    </div>
-
-                    <div>
-                      From <span className="text-16 fw-500">${elm.price}</span>
-                    </div>
-                  </div> */}
+                  <div className="tourCard__content px-10 pt-10">
+                    <h3 className="tourCard__title text-16 fw-500 mt-5">
+                      <span>{facility.name}</span>
+                    </h3>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* <div className="d-flex justify-center flex-column mt-60">

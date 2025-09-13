@@ -12,7 +12,7 @@ export default function BookingPages() {
         <div className="row">
           <div className="col-lg-8">
             <div className="bg-white rounded-12 shadow-2 py-15 px-20">
-              <Link href="/login" className="text-accent-1">
+              <Link href="/" className="text-accent-1">
                 Sign in
               </Link>{" "}
               to book with your saved details or

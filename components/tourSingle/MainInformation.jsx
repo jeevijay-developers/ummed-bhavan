@@ -20,7 +20,7 @@ export default function MainInformation({ tour }) {
           </div> */}
 
           <h2 className="text-40 sm:text-30 lh-14 mt-20">
-            {tour.title}
+            {tour?.data?.title || tour?.name}
 
             <br />
             {/* {tour?.title.split(" ").slice(7).join(" ")} */}

@@ -3,14 +3,35 @@ import { destinationsEight } from "@/data/destinations";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { tourDataThreeA } from "@/data/tours";
 import { IoCloseSharp } from "react-icons/io5";
+import { fetchClubGalleries } from "@/util/server";
 import "./style.css";
 
 export default function TrendingDestinationsTwo() {
   const [image, setImage] = useState("/img/clubgallary/cg10.jpg");
   const [viewBig, setViewBig] = useState(false);
   const [text, setText] = useState("");
+  const [clubGalleries, setClubGalleries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadClubGalleries = async () => {
+      try {
+        setLoading(true);
+        const response = await fetchClubGalleries(1, 20); // Fetch up to 20 galleries
+        setClubGalleries(response.clubGalleries || []);
+        setError(null);
+      } catch (err) {
+        console.error("Error loading club galleries:", err);
+        setError("Failed to load gallery images. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadClubGalleries();
+  }, []);
   
   const handleImageClick = (path, text) => {
     setImage(path);
@@ -42,6 +63,57 @@ export default function TrendingDestinationsTwo() {
       document.removeEventListener('keydown', handleEscKey);
     };
   }, [viewBig]);
+
+  if (loading) {
+    return (
+      <section className="layout-pt-xl layout-pb-xl bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container">
+          <div className="row justify-center text-center mb-60">
+            <div className="col-lg-8">
+              <h2 className="text-40 lg:text-36 md:text-30 sm:text-24 fw-700 text-dark mb-20">
+                Club Gallery
+              </h2>
+              <p className="text-16 text-gray leading-relaxed">Loading gallery images...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="layout-pt-xl layout-pb-xl bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container">
+          <div className="row justify-center text-center mb-60">
+            <div className="col-lg-8">
+              <h2 className="text-40 lg:text-36 md:text-30 sm:text-24 fw-700 text-dark mb-20">
+                Club Gallery
+              </h2>
+              <p className="text-16 text-danger">{error}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (clubGalleries.length === 0) {
+    return (
+      <section className="layout-pt-xl layout-pb-xl bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container">
+          <div className="row justify-center text-center mb-60">
+            <div className="col-lg-8">
+              <h2 className="text-40 lg:text-36 md:text-30 sm:text-24 fw-700 text-dark mb-20">
+                Club Gallery
+              </h2>
+              <p className="text-16 text-gray leading-relaxed">No gallery images available at the moment.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="layout-pt-xl layout-pb-xl bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container">
@@ -72,53 +144,58 @@ export default function TrendingDestinationsTwo() {
           data-aos-delay="300"
           className="row y-gap-40 x-gap-30 pt-20"
         >
-          {tourDataThreeA.map((elm, i) => (
-            <div
-              key={i}
-              className="col-lg-4 col-md-6"
-              data-aos="zoom-in"
-              data-aos-delay={i * 100}
-            >
+          {clubGalleries.map((gallery, i) => {
+            // Use the first image from the images array
+            const imageUrl = gallery.images && gallery.images.length > 0 ? gallery.images[0] : "/img/clubgallary/default.jpg";
+            
+            return (
               <div
-                className="enhanced-gallery-card group cursor-pointer"
-                onClick={() => {
-                  handleImageClick(elm.imageSrc, elm.title);
-                }}
+                key={gallery._id || i}
+                className="col-lg-4 col-md-6"
+                data-aos="zoom-in"
+                data-aos-delay={i * 100}
               >
-                <div className="card-image-wrapper relative overflow-hidden rounded-20">
-                  <div className="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10"></div>
-                  
-                  <Image
-                    width={450}
-                    height={300}
-                    src={elm.imageSrc}
-                    alt={elm.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  
-                  {/* Hover Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-25 z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="bg-white/20 backdrop-blur-md rounded-12 p-20 border border-white/30">
-                      <h4 className="text-white text-18 fw-600 mb-8">{elm.title}</h4>
-                      <div className="flex items-center text-white/80 text-14">
-                        <span className="mr-10">📸</span>
-                        <span>Click to view full image</span>
+                <div
+                  className="enhanced-gallery-card group cursor-pointer"
+                  onClick={() => {
+                    handleImageClick(imageUrl, gallery.title);
+                  }}
+                >
+                  <div className="card-image-wrapper relative overflow-hidden rounded-20">
+                    <div className="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10"></div>
+                    
+                    <Image
+                      width={450}
+                      height={300}
+                      src={imageUrl}
+                      alt={gallery.title || "Gallery Image"}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    
+                    {/* Hover Content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-25 z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="bg-white/20 backdrop-blur-md rounded-12 p-20 border border-white/30">
+                        <h4 className="text-white text-18 fw-600 mb-8">{gallery.title || "Gallery Image"}</h4>
+                        <div className="flex items-center text-white/80 text-14">
+                          <span className="mr-10">📸</span>
+                          <span>Click to view full image</span>
+                        </div>
+                        <div className="w-0 group-hover:w-full h-1 bg-white/60 mt-15 transition-all duration-700 delay-200"></div>
                       </div>
-                      <div className="w-0 group-hover:w-full h-1 bg-white/60 mt-15 transition-all duration-700 delay-200"></div>
                     </div>
                   </div>
-                </div>
-                
-                {/* Card Title (Always Visible) */}
-                <div className="card-content pt-20 text-center">
-                  <h4 className="text-20 fw-600 text-dark group-hover:text-blue-600 transition-colors duration-300">
-                    {elm.title}
-                  </h4>
-                  <div className="w-0 group-hover:w-16 h-0.5 bg-blue-600 mx-auto mt-10 transition-all duration-500"></div>
+                  
+                  {/* Card Title (Always Visible) */}
+                  <div className="card-content pt-20 text-center">
+                    <h4 className="text-20 fw-600 text-dark group-hover:text-blue-600 transition-colors duration-300">
+                      {gallery.title || "Gallery Image"}
+                    </h4>
+                    <div className="w-0 group-hover:w-16 h-0.5 bg-blue-600 mx-auto mt-10 transition-all duration-500"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

@@ -50,7 +50,7 @@ export default function Header2() {
             </button>
 
             <button
-              onClick={() => pageNavigate("/login")}
+              onClick={() => pageNavigate("/")}
               className="d-flex ml-20"
             >
               <i className="icon-person text-18"></i>

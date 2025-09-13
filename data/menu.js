@@ -74,7 +74,7 @@ export const pages = [
   { id: 54, title: "About", href: "/about" },
   { id: 55, title: "Help center", href: "/help-center" },
   { id: 56, title: "Terms", href: "/terms" },
-  { id: 57, title: "Login", href: "/login" },
+  { id: 57, title: "Login", href: "/" },
   { id: 58, title: "Register", href: "/register" },
   { id: 59, title: "404", href: "/404" },
   { id: 510, title: "Invoice", href: "/invoice" },

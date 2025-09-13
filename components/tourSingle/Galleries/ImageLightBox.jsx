@@ -41,7 +41,7 @@ export default function ImageLightBox({
             <Image
               width={850}
               height={510}
-              src={elm.image}
+              src={elm}
               style={{
                 height: "100%",
                 width: "100%",

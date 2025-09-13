@@ -69,7 +69,7 @@ export const menuData = [
       { id: 53, label: "Contact", href: "/contact" },
       { id: 54, label: "Help center", href: "/help-center" },
       { id: 55, label: "Terms", href: "/terms" },
-      { id: 56, label: "Login", href: "/login" },
+      { id: 56, label: "Login", href: "/" },
       { id: 57, label: "Register", href: "/register" },
       { id: 58, label: "404 Page", href: "/404" },
       { id: 59, label: "Invoice", href: "/invoice" },

@@ -75,7 +75,7 @@ export default function Header8() {
             </button>
 
             <button
-              onClick={() => pageNavigate("/login")}
+              onClick={() => pageNavigate("/")}
               className="d-flex ml-20"
             >
               <i className="icon-person text-18 text-white"></i>
@@ -96,14 +96,14 @@ export default function Header8() {
             </Link>
 
             <Link
-              href="/login"
+              href="/"
               className="button -sm -outline-white text-white rounded-200 ml-30"
             >
               Log in
             </Link>
 
             <Link
-              href="/login"
+              href="/"
               className="button size-42 -outline-white text-white rounded-200 ml-20"
             >
               <i className="icon-search text-18"></i>
