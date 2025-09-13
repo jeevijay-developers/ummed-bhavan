@@ -37,11 +37,11 @@ export default function ArticlesOne() {
         {/* Centered Header Section */}
         <div className="row justify-center text-center mb-60">
           <div className="col-lg-8">
-            <div data-aos="fade-up" className="mb-20">
+            {/* <div data-aos="fade-up" className="mb-20">
               <span className="text-orange-600 text-14 fw-600 uppercase tracking-wide">
                 Memorable Moments
               </span>
-            </div>
+            </div> */}
             <h2
               data-aos="fade-up"
               data-aos-delay="100"
