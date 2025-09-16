@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-export const fetchFacilities = async (page = 1, limit = 9) => {
+export const fetchFacilities = async (page, limit) => {
     try {
         const response = await axiosInstance.get(`/api/facilities/get-all?page=${page}&limit=${limit}`);
         return response.data;

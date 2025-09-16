@@ -13,6 +13,7 @@ const Event = () => {
       try {
         setLoading(true);
         const response = await fetchEvents(1, 20); // Fetch up to 20 events
+        
         setEvents(response.events || []);
         setError(null);
       } catch (err) {
@@ -69,11 +70,11 @@ const Event = () => {
               src={event.image || "/img/events/default.jpg"}
               height={400}
               width={700}
-              alt={event.slug || "Event"}
+              alt={event.name || "Event"}
               className="event-image"
             />
             <div className="event-content">
-              <h4>{event.slug || "Event"}</h4>
+              <h4>{event.name || "Event"}</h4>
               <p className="event-date">
                 📅 {new Date(event.eventDate).toLocaleDateString("en-US", { 
                   month: "long", 

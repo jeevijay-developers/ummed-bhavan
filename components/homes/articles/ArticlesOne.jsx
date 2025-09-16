@@ -64,7 +64,8 @@ export default function ArticlesOne() {
         <div
           data-aos="fade-up"
           data-aos-delay="300"
-          className="row g-4 pt-20"
+          className="row pt-20"
+          style={{ gap: '30px' }}
         >
           {loading ? (
             <div className="col-12 text-center py-5">
