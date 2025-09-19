@@ -13,14 +13,14 @@ import "swiper/css/pagination";
 const slides = [
   {
     id: 1,
-    imageSrc: "/img/hero/7/8.jpg",
+    imageSrc: "/img/hero/7/2.jpg",
     subtitle:
       "Search, compare and book 15,000+ multiday tours all over the world.",
     title: "WELCOME TO SHREE UMMED CLUB",
   },
   {
     id: 2,
-    imageSrc: "/img/hero/7/2.jpg",
+    imageSrc: "/img/hero/7/4.jpg",
     subtitle:
       "Experience unforgettable moments at our exclusive events and celebrations. From cultural festivals to themed parties, we bring people together in joyous harmony.",
     title: "Events & Celebrations",
@@ -34,14 +34,14 @@ const slides = [
   },
   {
     id: 4,
-    imageSrc: "/img/hero/7/9.png",
+    imageSrc: "/img/hero/7/5.jpg",
     subtitle:
       "Savor a culinary journey with our exquisite dining options. Our multi-cuisine restaurant and café offer a delightful ambiance, perfect for family gatherings and social meet-ups.",
     title: "Dining & Hospitality",
   },
   {
     id: 5,
-    imageSrc: "/img/hero/7/5.jpg",
+    imageSrc: "/img/hero/7/1.jpeg",
     subtitle:
       "Become a part of the Shree Ummed Club family. Enjoy exclusive privileges, access to premium amenities, and a community that celebrates togetherness and well-being.",
     title: "Membership & Benefits",

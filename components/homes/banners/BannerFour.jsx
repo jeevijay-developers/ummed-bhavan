@@ -7,7 +7,7 @@ export default function BannerFour() {
       {/* Background Image */}
       <div className="sectionBg relative">
         <Image
-          src="/img/features/1/a.webp"
+          src="/img/features/1/cricket.jpg"
           width={1920}
           height={700}
           alt="image"

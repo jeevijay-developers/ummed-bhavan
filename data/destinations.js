@@ -277,32 +277,32 @@ export const destinationsSix = [
   {
     id: 1,
     title: "Bar and Dining",
-    imgSrc: "/img/features/1/1.jpeg",
+    imgSrc: "/img/features/1/bar.jpg",
   },
   {
     id: 2,
     title: "Family Room",
-    imgSrc: "/img/features/1/2.jpeg",
+    imgSrc: "/img/features/1/family-room.jpg",
   },
   {
     id: 3,
-    title: "Gymnassium",
-    imgSrc: "/img/features/1/3.jpeg",
+    title: "Heritage Library",
+    imgSrc: "/img/features/1/library.jpg",
   },
   {
     id: 4,
-    title: "Sports Facilities",
-    imgSrc: "/img/features/1/image1.jpeg",
+    title: "Lawn Tennis",
+    imgSrc: "/img/features/1/lawn-tennis.jpg",
   },
   {
     id: 5,
-    title: "Snooker",
-    imgSrc: "/img/features/1/5.jpeg",
+    title: "Billiards",
+    imgSrc: "/img/features/1/billiards.jpg",
   },
   {
     id: 6,
-    title: "Table tennis",
-    imgSrc: "/img/features/1/6.jpeg",
+    title: "Sports Facilities",
+    imgSrc: "/img/features/1/cricket.jpg",
   },
 ];
 
