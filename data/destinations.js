@@ -277,17 +277,17 @@ export const destinationsSix = [
   {
     id: 1,
     title: "Bar and Dining",
-    imgSrc: "/img/features/1/bar.jpg",
+    imgSrc: "/img/features/1/bar-image.jpg",
   },
   {
     id: 2,
     title: "Family Room",
-    imgSrc: "/img/features/1/family-room.jpg",
+    imgSrc: "/img/features/1/rooms.jpg",
   },
   {
     id: 3,
     title: "Heritage Library",
-    imgSrc: "/img/features/1/library.jpg",
+    imgSrc: "/img/features/1/heritageLibrary.jpg",
   },
   {
     id: 4,
@@ -297,7 +297,7 @@ export const destinationsSix = [
   {
     id: 5,
     title: "Billiards",
-    imgSrc: "/img/features/1/billiards.jpg",
+    imgSrc: "/img/features/1/pool-billiards.jpg",
   },
   {
     id: 6,
